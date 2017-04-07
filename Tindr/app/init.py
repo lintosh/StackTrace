@@ -25,12 +25,19 @@ mailCheck.select('inbox')
 
 @app.route("/loadMails")
 def loadMails():
+	result=""	
 	typ, data = mailCheck.search(None, 'ALL')
 	for num in data[0].split():
 		typ, data = mailCheck.fetch(num, '(RFC822)')
-		print num
-		return 'Message %s\n%s\n' % (num, data[0][1])
+		msg = email.message_from_string(data[0][1])
+		result+=num
+		result+=msg['Subject']
+		result+="</br>"
+		# return 'Message %s: %s' % (num, msg['Subject'])
+		# return 'Message %s\n%s\n' % (num, data[0][1])
+	return result
 	mailCheck.close()
+	mailCheck.logout()
 
 @app.route("/createLabel/<mail>/")
 def createMailBox(mail):
