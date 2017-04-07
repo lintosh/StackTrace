@@ -12,7 +12,7 @@ app.secret_key='$_$pecctrums$_$'
 #instantiate flaskMail
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = "joemartiny1@gmail.com"
+app.config['MAIL_USERNAME'] = "email address"
 app.config['MAIL_PASSWORD'] = password()
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
